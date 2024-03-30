@@ -1,11 +1,44 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,SafeAreaView, Pressable } from 'react-native'
 import React from 'react'
+import LottieView from 'lottie-react-native'
 
 const BasicInfo = () => {
   return (
-    <View>
-      <Text>BasicInfo</Text>
-    </View>
+    <SafeAreaView style={{flex:1,backgroundColor:'white'}}>
+     <View style={{marginTop:80}}>
+        
+        <Text style={{fontSize:35,fontFamily:"Poppins-Bold",
+        fontWeight: 800,
+    marginLeft: 20,
+    marginTop:10,
+    color:'black'}}>
+        Empowering connections for professionals like you.
+        </Text>
+        <Text style={{fontSize:25,fontFamily:"Poppins-Bold",
+        fontWeight: 700,
+    marginLeft: 20,
+    marginTop:10,
+    color:'black'}}>
+        Let your profile shine, bridging the gap between employers and employees seamlessly.
+        </Text>
+        {/* <View style={{ alignItems: 'center', marginTop: 20 }}>
+        <LottieView
+        
+            source={require('../assets/handshake.json')} // Replace 'animation.json' with your animation file path
+            autoPlay
+            loop
+            style={{ width: 200, height: 200 , flex: 1}}
+          />
+        </View>  */}
+        
+        </View>
+
+        <Pressable style={{backgroundColor: '#900C3F', padding: 15, marginTop: 'auto'}}>
+            <Text style={{textAlign:"center",color:"white",fontWeight:600,fontSize:15}}>
+                Enter basic Info
+            </Text>
+        </Pressable>
+    </SafeAreaView>
   )
 }
 
