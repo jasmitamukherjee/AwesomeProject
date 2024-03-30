@@ -20,23 +20,25 @@ const StackNavigator = () => {
     const Tab = createBottomTabNavigator();
     function BottomTabs(){
         return(
-            <Tab.Navigator>
-                <Tab.Screen name="Home/" component={HomeScreen} options={{tabBarStyle:{backgroundColor:'#101010'},
+            <Tab.Navigator screenOptions={()=>({
+                tabBarShowLabel:false
+            })}>
+                <Tab.Screen name="Home" component={HomeScreen} options={{tabBarStyle:{backgroundColor:'#101010'},
             tabBarLabelStyle:{color:'#008397'},
             headerShown:false,
             tabBarIcon:({focused})=>
             focused ?(
-                <MaterialCommunityIcons name='alpha' size={26} color='white'/>
+                <MaterialIcons name='explore' size={26} color='white'/>
 
 
             ):(
-                <MaterialCommunityIcons name='alpha' size={26} color='#989898'/>
+                <MaterialIcons name='explore' size={26} color='#989898'/>
 
 
             )
             
             }}/>
-            <Tab.Screen name="Likes/" component={LikesScreen} options={{tabBarStyle:{backgroundColor:'#101010'},
+            <Tab.Screen name="Likes" component={LikesScreen} options={{tabBarStyle:{backgroundColor:'#101010'},
             tabBarLabelStyle:{color:'#008397'},
             headerShown:false,
             tabBarIcon:({focused})=>
@@ -51,7 +53,7 @@ const StackNavigator = () => {
             )
             
             }}/>
-            <Tab.Screen name="Chat/" component={ChatScreen} options={{tabBarStyle:{backgroundColor:'#101010'},
+            <Tab.Screen name="Chat" component={ChatScreen} options={{tabBarStyle:{backgroundColor:'#101010'},
             tabBarLabelStyle:{color:'#008397'},
             headerShown:false,
             tabBarIcon:({focused})=>
@@ -67,7 +69,7 @@ const StackNavigator = () => {
             
             }}/>
 
-<Tab.Screen name="Profile/" component={ProfileScreen} options={{tabBarStyle:{backgroundColor:'#101010'},
+<Tab.Screen name="Profile" component={ProfileScreen} options={{tabBarStyle:{backgroundColor:'#101010'},
             tabBarLabelStyle:{color:'#008397'},
             headerShown:false,
             tabBarIcon:({focused})=>
