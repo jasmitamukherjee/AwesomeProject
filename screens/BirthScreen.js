@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons'
-
+import { TouchableOpacity } from 'react-native'
 const BirthScreen = () => {
   const navigation=useNavigation()
   const monthRef = useRef(null)
@@ -11,6 +11,27 @@ const BirthScreen = () => {
   const [day,setDay] = useState("")
   const [month,setMonth] = useState("")
   const [year,setYear] = useState("")
+
+  const handleDayChange= text =>{
+    setDay(text); 
+    if(text.length == 2){
+      monthRef.current.focus()
+    }
+  }
+  const handleMonthChange= text =>{
+    setMonth(text)
+    if(text.length == 2){
+      yearRef.current.focus()
+    }
+  }
+
+  const handleYearChange=text =>{
+    setYear(text)
+  }
+  const handleNext=()=>{
+    navigation.navigate("Location")
+
+  }
 
   return (
     <SafeAreaView style={{flex:1,backgroundColor:"white"}}>
@@ -31,11 +52,23 @@ const BirthScreen = () => {
             color:"black",
             marginTop: 15,
           }}>Enter your date of birth</Text>
-          <View>
-            <TextInput autoFocus={true} placeholder='DD' maxLength={2} keyboardType='numeric' value={day} style={{borderBottomWidth:1,borderColor:"black",  padding: 10,
-              width: 50,
+          <View style={{flexDirection:"row",gap:10,marginTop:80,justifyContent:"center"}}>
+            <TextInput autoFocus={true} placeholder='DD' maxLength={2} keyboardType='numeric' value={day} onChangeText={handleDayChange} style={{borderBottomWidth:1,borderColor:"black",  padding: 10,
+              width: 60,
               fontSize: day ? 20 : 20,}}/>
+               <TextInput ref={monthRef} autoFocus={true} placeholder='MM' maxLength={2} keyboardType='numeric' value={month} onChangeText={handleMonthChange} style={{borderBottomWidth:1,borderColor:"black",  padding: 10,
+              width: 60,
+              fontSize: month ? 20 : 20,}}/>
+               <TextInput ref={yearRef} autoFocus={true} placeholder='YYYY' maxLength={4} keyboardType='numeric' value={year} onChangeText={handleYearChange} style={{borderBottomWidth:1,borderColor:"black",  padding: 10,
+              width: 70,
+              fontSize: year ? 20 : 20,}}/>
           </View>
+          <TouchableOpacity
+onPress={handleNext}
+activeOpacity={0.8} style={{marginTop:40,marginLeft:"auto"}}>
+<MaterialCommunityIcons 
+style={{alignSelf:"center",marginTop:20}}name="arrow-right-circle" size={45} color="#502b63"/>
+</TouchableOpacity>
       </View>
     </SafeAreaView>
   )
