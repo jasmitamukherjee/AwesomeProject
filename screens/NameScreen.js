@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View,SafeAreaView, Image, TextInput } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View,SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons'
 const NameScreen = () => {
+  const [firstName,setFirstName]=useState("")
+  const [lastName, setLastName] = useState("")
   return (
     <SafeAreaView style={{flex:1,backgroundColor:"white"}}>
       <Text style={{marginTop:50,textAlign:'center',color:"gray"}}>no bg checks are connected
@@ -24,10 +26,32 @@ const NameScreen = () => {
              color:"black"}}>
     Enter your name : 
   </Text>
-  <TextInput placeholder='first name(required)' placeholderTextColor={"#BEBEBE"}
+  <TextInput
+  autoFocus={true}
+  value={firstName}
+  onChangeText={(text)=> setFirstName(text)}
+  placeholder='First name(required)' placeholderTextColor={"#BEBEBE"}
   style={{width:340,marginVertical:10,marginTop:25,borderBottomColor:"black",borderBottomWidth:1,
-  paddingBottom:10}}/>
+  paddingBottom:10,
+  fontSize:firstName? 22:22
+  }}/>
+
+<TextInput
+  autoFocus={true}
+  value={lastName}
+  onChangeText={(text)=> setLastName(text)}
+  placeholder='Last name(required)' placeholderTextColor={"#BEBEBE"}
+  style={{width:340,marginVertical:10,marginTop:20,borderBottomColor:"black",borderBottomWidth:1,
+  paddingBottom:10,
+  fontSize:lastName? 22:22
+  }}/>
+
+  
 </View>
+<TouchableOpacity activeOpacity={0.8} style={{marginTop:40,marginLeft:"auto"}}>
+<MaterialCommunityIcons 
+style={{alignSelf:"center",marginTop:20}}name="arrow-right-circle" size={45} color="#502b63"/>
+</TouchableOpacity>
 
    </View>
     </SafeAreaView>
