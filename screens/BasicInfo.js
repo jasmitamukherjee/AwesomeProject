@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View,SafeAreaView, Pressable } from 'react-native'
 import React from 'react'
 import LottieView from 'lottie-react-native'
+import { useNavigation } from '@react-navigation/native'
 
 const BasicInfo = () => {
+const navigation =useNavigation()
+  
   return (
     <SafeAreaView style={{flex:1,backgroundColor:'white'}}>
-     <View style={{marginTop:80}}>
+     <View style={{marginTop:300}}>
         
         <Text style={{fontSize:35,fontFamily:"Poppins-Bold",
         fontWeight: 800,
@@ -33,7 +36,9 @@ const BasicInfo = () => {
         
         </View>
 
-        <Pressable style={{backgroundColor: '#900C3F', padding: 15, marginTop: 'auto'}}>
+        <Pressable 
+        onPress={()=> navigation.navigate("Name")}
+        style={{backgroundColor: '#900C3F', padding: 15, marginTop: 'auto'}}>
             <Text style={{textAlign:"center",color:"white",fontWeight:600,fontSize:15}}>
                 Enter basic Info
             </Text>
