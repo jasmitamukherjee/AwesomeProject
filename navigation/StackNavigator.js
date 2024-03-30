@@ -28,11 +28,11 @@ const StackNavigator = () => {
             headerShown:false,
             tabBarIcon:({focused})=>
             focused ?(
-                <MaterialIcons name='explore' size={26} color='white'/>
+                <MaterialIcons name='explore' size={30} color='white'/>
 
 
             ):(
-                <MaterialIcons name='explore' size={26} color='#989898'/>
+                <MaterialIcons name='explore' size={30} color='#989898'/>
 
 
             )
@@ -43,11 +43,11 @@ const StackNavigator = () => {
             headerShown:false,
             tabBarIcon:({focused})=>
             focused ?(
-                <MaterialCommunityIcons name='sticker-check' size={26} color='white'/>
+                <MaterialCommunityIcons name='sticker-check' size={30} color='white'/>
 
 
             ):(
-                <MaterialCommunityIcons name='sticker-check' size={26} color='#989898'/>
+                <MaterialCommunityIcons name='sticker-check' size={30} color='#989898'/>
 
 
             )
@@ -58,11 +58,11 @@ const StackNavigator = () => {
             headerShown:false,
             tabBarIcon:({focused})=>
             focused ?(
-                <MaterialIcons name='chat-bubble-outline' size={26} color='white'/>
+                <MaterialIcons name='chat-bubble-outline' size={30} color='white'/>
 
 
             ):(
-                <MaterialIcons name='chat-bubble-outline' size={26} color='#989898'/>
+                <MaterialIcons name='chat-bubble-outline' size={30} color='#989898'/>
 
 
             )
@@ -74,11 +74,11 @@ const StackNavigator = () => {
             headerShown:false,
             tabBarIcon:({focused})=>
             focused ?(
-                <IonIcons name='person-circle-outline' size={26} color='white'/>
+                <IonIcons name='person-circle-outline' size={30} color='white'/>
 
 
             ):(
-                <IonIcons name='person-circle-outline' size={26} color='#989898'/>
+                <IonIcons name='person-circle-outline' size={30} color='#989898'/>
 
 
             )
