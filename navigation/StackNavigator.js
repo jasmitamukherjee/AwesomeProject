@@ -13,6 +13,7 @@ import IonIcons
 from 'react-native-vector-icons/Ionicons'
 import ChatScreen from '../screens/ChatScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import { NavigationContainer } from '@react-navigation/native';
 
 const StackNavigator = () => {
     const Stack = createNativeStackNavigator();
@@ -29,7 +30,7 @@ const StackNavigator = () => {
 
 
             ):(
-                <MaterialCommunityIcons name='email' size={26} color='#989898'/>
+                <MaterialCommunityIcons name='alpha' size={26} color='#989898'/>
 
 
             )
@@ -84,10 +85,18 @@ const StackNavigator = () => {
             </Tab.Navigator>
         )
     }
+
+    function MainStack(){
+        return(
+            <Stack.Navigator>
+                <Stack.Screen name="Main" component={BottomTabs} options={{headerShown:false}}/>
+            </Stack.Navigator>
+        )
+    }
   return (
-    <View>
-      <Text>StackNavigator</Text>
-    </View>
+    <NavigationContainer>
+        <MainStack/>
+    </NavigationContainer>
   )
 }
 

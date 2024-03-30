@@ -26,19 +26,14 @@ import {
 
 
 import Fontisto from 'react-native-vector-icons/Fontisto'
+import StackNavigator from './navigation/StackNavigator';
 
 function App() {
  
   return (
-    <SafeAreaView>
-      
-     <View>
-      <Text>
-      ConnectIn
-      </Text>
-      <Fontisto name='email' size={26} color='black'/>
-      </View>
-    </SafeAreaView>
+   <>
+   <StackNavigator/>
+   </>
   );
 }
 
