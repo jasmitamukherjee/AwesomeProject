@@ -38,7 +38,7 @@ const navigation =useNavigation()
 
         <Pressable 
         onPress={()=> navigation.navigate("Name")}
-        style={{backgroundColor: '#900C3F', padding: 15, marginTop: 'auto'}}>
+        style={{backgroundColor: '#502b63', padding: 15, marginTop: 'auto'}}>
             <Text style={{textAlign:"center",color:"white",fontWeight:600,fontSize:15}}>
                 Enter basic Info
             </Text>
