@@ -4,7 +4,7 @@
  *
  * @format
  */
-
+import { ModalPortal } from 'react-native-modals';
 import React from 'react';
 import {
   SafeAreaView,
@@ -26,6 +26,9 @@ function App() {
   return (
    <>
    <StackNavigator/>
+   <ModalPortal />
+   
+   
    </>
   );
 }
