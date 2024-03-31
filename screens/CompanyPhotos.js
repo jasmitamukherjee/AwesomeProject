@@ -51,7 +51,7 @@ import {
       saveRegistrationProgress('CompanyPhotos', {imageUrls});
   
       // Navigate to the next screen
-      navigation.navigate('CompanyOffers'); // Navigate to the appropriate screen
+      navigation.navigate('EmployerPrompts'); // Navigate to the appropriate screen
     };
   
     return (

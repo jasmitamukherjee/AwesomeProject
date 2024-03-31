@@ -21,7 +21,7 @@ const CompanyOffers = () => {
     saveRegistrationProgress('CompanyOffers', { companyOffers });}
 
    
-    navigation.navigate("EmployerPrompts")}
+    navigation.navigate("CompanyPhotos")}
   
   const [companyOffers, setCompanyOffers] = useState([]);
 
@@ -79,7 +79,7 @@ const CompanyOffers = () => {
         <View style={{ flex: 1, marginTop: 90, marginHorizontal: 20 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <View style={{ width: 44, height: 44, borderRadius: 22, borderWidth: 2, borderColor: 'black', justifyContent: 'center', alignItems: 'center' }}>
-              <FontAwesome name="magnify-scan" size={26} color="black" />
+              <MaterialCommunityIcons name="magnify-scan" size={26} color="black" />
             </View>
             <Image
               style={{ width: 100, height: 40 }}

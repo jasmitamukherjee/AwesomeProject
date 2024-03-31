@@ -11,15 +11,16 @@ const navigation =useNavigation()
         
         <Text style={{fontSize:35,fontFamily:"Poppins-Bold",
         fontWeight: 800,
+        
     marginLeft: 20,
     marginTop:10,
     color:'black'}}>
         Empowering connections for professionals like you.
         </Text>
         <Text style={{fontSize:25,fontFamily:"Poppins-Bold",
-        fontWeight: 700,
+        fontWeight: 600,
     marginLeft: 20,
-    marginTop:10,
+    marginTop:20,
     color:'black'}}>
         Let your profile shine, bridging the gap between employers and employees seamlessly.
         </Text>
