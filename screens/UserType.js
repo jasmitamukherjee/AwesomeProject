@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View , SafeAreaView,Image} from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FontAwesome5
 from 'react-native-vector-icons/FontAwesome5'
 import FontAwesome
@@ -11,11 +11,23 @@ import { TouchableOpacity } from 'react-native'
 import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation } from '@react-navigation/native'
+import { getRegistrationProgress, saveRegistrationProgress } from '../registrationUtils'
 const UserType = () => {
+  useEffect(()=>{
+    getRegistrationProgress('UserType').then(progressData =>{
+      if(progressData){
+        setUserType(progressData.userType || '' )
+      }
+    })
+  },[])
   const navigation=useNavigation()
   const handleNext=()=>{
+    
+      saveRegistrationProgress('UserType',{userType})
+    
+   
     if(userType == 'Employee'){
-    navigation.navigate("Skills")}
+    navigation.navigate("EmployeeSkills")}
     else{
       navigation.navigate("LookingFor")
 
@@ -57,7 +69,7 @@ const UserType = () => {
               <FontAwesome
                 name="circle"
                 size={26}
-                color={userType == 'Employee' ? '#581845' : '#F0F0F0'}
+                color={userType == 'Employee' ? '#502b63' : '#F0F0F0'}
               />
             </Pressable>
           </View>
@@ -72,13 +84,11 @@ const UserType = () => {
               <FontAwesome
                 name="circle"
                 size={26}
-                color={userType == 'Employer' ? '#581845' : '#F0F0F0'}
+                color={userType == 'Employer' ? '#502b63' : '#F0F0F0'}
               />
             </Pressable>
           </View>
-          <View>
-            <Text>Note : You'll be shown as "{userType}" on this app.</Text>
-          </View>
+          
         </View>
         <View
           style={{

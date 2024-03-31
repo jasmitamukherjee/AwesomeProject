@@ -6,10 +6,12 @@ import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { TouchableOpacity } from 'react-native'
+import { saveRegistrationProgress } from '../registrationUtils'
 const PromptsScreen = () => {
   const route= useRoute()
   const navigation = useNavigation()
   const handleNext=()=>{
+    saveRegistrationProgress('Prompts',{prompts: route?.params?.prompts})
     navigation.navigate("PreFinal")
   }
   return (
