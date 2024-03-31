@@ -1,18 +1,34 @@
 import { StyleSheet, Text, View,SafeAreaView,Image, TextInput,TouchableOpacity } from 'react-native'
-import React, { useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import { useNavigation } from '@react-navigation/native'
 
 import Fontisto
 from 'react-native-vector-icons/Fontisto'
 import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons'
+import { getRegistrationProgress, saveRegistrationProgress } from '../registrationUtils'
 const EmailScreen = () => {
-  const [email,setEmail] = useState("")
-  const navigation=useNavigation()
-  const handleNext=()=>{
-    navigation.navigate("Password")
 
-  }
+  const [email,setEmail] = useState("")
+
+  useEffect(()=>{
+    getRegistrationProgress('Email').then(progressData => {
+      if(progressData){
+        setEmail(progressData.email || '')
+      }
+    })
+
+  },[])
+  const navigation=useNavigation()
+  const handleNext = () => {
+    if (email.trim() !== '') {
+        
+      
+      saveRegistrationProgress('Email', { email });
+    }
+    
+    navigation.navigate('Password');
+  };
   return (
     <SafeAreaView style={{flex:1,backgroundColor:"white"}}>
       <View style={{marginTop: 90, marginHorizontal: 20}}>
@@ -36,7 +52,7 @@ const EmailScreen = () => {
           Email verification helps us keep your account secure and let's you connect over the network more easily.
           
         </Text>
-          <TextInput autoFocus={true} value={email} onChange={(text)=>setEmail(text)} 
+          <TextInput autoFocus={true} value={email} onChangeText={(text)=>setEmail(text)} 
           style={{
             width: 340,
             marginVertical: 10,

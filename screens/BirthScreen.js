@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View,SafeAreaView,Image, TextInput } from 'react-native'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons'
 import { TouchableOpacity } from 'react-native'
+import { getRegistrationProgress, saveRegistrationProgress } from '../registrationUtils'
 const BirthScreen = () => {
   const navigation=useNavigation()
   const monthRef = useRef(null)
@@ -28,7 +29,23 @@ const BirthScreen = () => {
   const handleYearChange=text =>{
     setYear(text)
   }
+  useEffect(()=>{
+    getRegistrationProgress('Birth').then(progressData=>{
+      if(progressData){
+        const {dateOfBirth} = progressData
+        const [dayValue,monthValue,yearValue]= dateOfBirth.split("/")
+        setDay(dayValue)
+        setMonth(monthValue)
+        setYear(yearValue)
+
+      }
+    })
+  })
   const handleNext=()=>{
+    if(day.trim() !== '' && month.trim() !== '' && year.trim() !== ''){
+      const dateOfBirth= `${day}/${month}/${year}`
+      saveRegistrationProgress("Birth",{dateOfBirth})
+    }
     navigation.navigate("Location")
 
   }
