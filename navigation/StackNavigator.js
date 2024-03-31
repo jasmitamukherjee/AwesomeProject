@@ -21,15 +21,19 @@ import PasswordScreen from '../screens/PasswordScreen';
 import BirthScreen from '../screens/BirthScreen';
 import LocationScreen from '../screens/LocationScreen';
 import GenderScreen from '../screens/GenderScreen';
-import TypeScreen from '../screens/TypeScreen';
 import UserType from '../screens/UserType';
-import LookingFor from '../screens/LookingForEmployee';
 import PhotosScreen from '../screens/PhotosScreen'
 import PromptsScreen from '../screens/PromptsScreen';
 import ShowPromptsScreen from '../screens/ShowPromptsScreen';
 import PreFinalScreen from '../screens/PreFinalScreen';
 import SkillsScreen from '../screens/SkillsScreen';
 import LookingForEmployee from '../screens/LookingForEmployee';
+import LookingFor from '../screens/LookingFor';
+import CompanyOffers from '../screens/CompanyOffers';
+import CompanyPhotos from '../screens/CompanyPhotos';
+import EmployerPrompts from '../screens/EmployerPrompts';
+import ShowEmployerPrompts from '../screens/ShowEmployerPrompts';
+import EmployeeSkills from '../screens/EmployeeSkills';
 
 const StackNavigator = () => {
     const Stack = createNativeStackNavigator();
@@ -120,13 +124,14 @@ const StackNavigator = () => {
 
                 <Stack.Screen name="Gender" component={GenderScreen} options={{headerShown:false}}/>
 
-                <Stack.Screen name="Type" component={TypeScreen} options={{headerShown:false}}/>
 
                 <Stack.Screen name="UserType" component={UserType} options={{headerShown:false}}/>
 
                 <Stack.Screen name="LookingForEmployee" component={LookingForEmployee} options={{headerShown:false}}/>
+                <Stack.Screen name="LookingFor" component={LookingFor} options={{headerShown:false}}/>
 
                 <Stack.Screen name="Photos" component={PhotosScreen} options={{headerShown:false}}/>
+                <Stack.Screen name="CompanyOffers" component={CompanyOffers} options={{headerShown:false}}/>
 
                 <Stack.Screen name="Prompts" component={PromptsScreen} options={{headerShown:false}}/>
                 <Stack.Screen name="Skills" component={SkillsScreen} options={{headerShown:false}}/>
@@ -134,6 +139,10 @@ const StackNavigator = () => {
                 <Stack.Screen name="ShowPrompts" component={ShowPromptsScreen} options={{headerShown:false}}/>
 
                 <Stack.Screen name="PreFinal" component={PreFinalScreen} options={{headerShown:false}}/>
+                <Stack.Screen name="CompanyPhotos" component={CompanyPhotos} options={{headerShown:false}}/>
+                <Stack.Screen name="EmployerPrompts" component={EmployerPrompts} options={{headerShown:false}}/>
+                <Stack.Screen name="ShowEmployerPrompts" component={ShowEmployerPrompts} options={{headerShown:false}}/>
+                <Stack.Screen name="EmployeeSkills" component={EmployeeSkills} options={{headerShown:false}}/>
 
 
             </Stack.Navigator>
