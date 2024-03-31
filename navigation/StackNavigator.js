@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
@@ -34,10 +34,13 @@ import CompanyPhotos from '../screens/CompanyPhotos';
 import EmployerPrompts from '../screens/EmployerPrompts';
 import ShowEmployerPrompts from '../screens/ShowEmployerPrompts';
 import EmployeeSkills from '../screens/EmployeeSkills';
+import { AuthContext } from '../AuthContext';
 
 const StackNavigator = () => {
     const Stack = createNativeStackNavigator();
     const Tab = createBottomTabNavigator();
+    const {isLoading,token}=useContext(AuthContext)
+    
     function BottomTabs(){
         return(
             <Tab.Navigator screenOptions={()=>({
@@ -163,7 +166,7 @@ const StackNavigator = () => {
     }
   return (
     <NavigationContainer>
-        <AuthStack/>
+        {token === null || token === '' ? <AuthStack /> : <MainStack />}
     </NavigationContainer>
   )
 }

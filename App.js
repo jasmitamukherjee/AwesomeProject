@@ -20,15 +20,18 @@ import {
 
 
 import StackNavigator from './navigation/StackNavigator';
+import { AuthProvider } from './AuthContext';
 
 function App() {
  
   return (
    <>
+   <AuthProvider>
+    <>
    <StackNavigator/>
    <ModalPortal />
-   
-   
+   </>
+   </AuthProvider>
    </>
   );
 }
