@@ -134,7 +134,7 @@ const ShowEmployerPrompts = () => {
       }); // Navigate away from the screen when prompts reach three
     }
   };
-  console.log('question', prompts);
+  // console.log('question', prompts);
  
   
   return (
@@ -152,7 +152,7 @@ const ShowEmployerPrompts = () => {
      <View style={{marginHorizontal:10,marginTop:20,flexDirection:"row",gap:10}}>
 
      {promptss.map((item, index) => (
-  <View key={index}>
+  <View key={item.id}>
     <Pressable onPress={()=> setOption(item?.name)}style={{ padding: 10, borderRadius: 20 ,backgroundColor: option== item?.name ? "#502b63" :"white"}}>
       <Text style={{textAlign:"center",color:option==item?.name ? "white":"black"}}>{item?.name}</Text>
     </Pressable>
