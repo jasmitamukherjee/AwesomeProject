@@ -21,7 +21,7 @@ const LookingFor = () => {
     saveRegistrationProgress('LookingFor', { lookingFor });}
 
    
-    navigation.navigate("CompanyPhotos")}
+    navigation.navigate("CompanyOffers")}
   
   const [lookingFor, setLookingFor] = useState([]);
 
