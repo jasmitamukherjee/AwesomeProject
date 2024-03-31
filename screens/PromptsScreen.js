@@ -37,7 +37,7 @@ const PromptsScreen = () => {
           <View style={{marginTop: 20, flexDirection: 'column', gap: 20}}>
           {route?.params?.prompts ? (
             route?.params?.prompts?.map((item, index) => (
-              <Pressable
+              <Pressable key={index}
                 onPress={() => navigation.navigate('ShowPrompts')}
                 style={{
                   borderColor: '#707070',
@@ -69,7 +69,7 @@ const PromptsScreen = () => {
             ))
           ) : (
             <View>
-              <Pressable
+              <Pressable 
                 onPress={() => navigation.navigate('ShowPrompts')}
                 style={{
                   borderColor: '#707070',
@@ -102,7 +102,7 @@ const PromptsScreen = () => {
                 </Text>
               </Pressable>
 
-              <Pressable
+              <Pressable 
                 onPress={() => navigation.navigate('ShowPrompts')}
                 style={{
                   borderColor: '#707070',
@@ -135,7 +135,7 @@ const PromptsScreen = () => {
                 </Text>
               </Pressable>
 
-              <Pressable
+              <Pressable 
                 onPress={() => navigation.navigate('ShowPrompts')}
                 style={{
                   borderColor: '#707070',
@@ -168,101 +168,7 @@ const PromptsScreen = () => {
               </Pressable>
             </View>
           )}
-          {/* {route?.params?.prompts?.map((item, index) => (
-            <Pressable
-              onPress={() => navigation.navigate('ShowPrompts')}
-              style={{
-                borderColor: '#707070',
-                borderWidth: 2,
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderStyle: 'dashed',
-                borderRadius: 10,
-                height: 70,
-              }}>
-              <Text
-                style={{
-                  fontWeight: '600',
-                  fontStyle: 'italic',
-                  fontSize: 15,
-                }}>
-                {item?.question}
-              </Text>
-              <Text
-                style={{
-                  fontWeight: '600',
-                  fontStyle: 'italic',
-                  fontSize: 15,
-                  marginTop: 3,
-                }}>
-                {item?.answer}
-              </Text>
-            </Pressable>
-          ))}
-
-          <Pressable
-            onPress={() => navigation.navigate('ShowPrompts')}
-            style={{
-              borderColor: '#707070',
-              borderWidth: 2,
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderStyle: 'dashed',
-              borderRadius: 10,
-              height: 70,
-            }}>
-            <Text
-              style={{
-                color: 'black',
-                fontWeight: '600',
-                fontStyle: 'italic',
-                fontSize: 15,
-              }}>
-              Select a Prompt
-            </Text>
-            <Text
-              style={{
-                color: 'black',
-                fontWeight: '600',
-                fontStyle: 'italic',
-                fontSize: 15,
-                marginTop: 3,
-              }}>
-              And write your own answer
-            </Text>
-          </Pressable>
-
-          <Pressable
-            onPress={() => navigation.navigate('ShowPrompts')}
-            style={{
-              borderColor: '#707070',
-              borderWidth: 2,
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderStyle: 'dashed',
-              borderRadius: 10,
-              height: 70,
-            }}>
-            <Text
-              style={{
-                color: 'black',
-                fontWeight: '600',
-                fontStyle: 'italic',
-                fontSize: 15,
-              }}>
-              Select a Prompt
-            </Text>
-            <Text
-              style={{
-                color: 'black',
-                fontWeight: '600',
-                fontStyle: 'italic',
-                fontSize: 15,
-                marginTop: 3,
-              }}>
-              And write your own answer
-            </Text>
-          </Pressable> */}
+         
         </View>
 
         <TouchableOpacity
