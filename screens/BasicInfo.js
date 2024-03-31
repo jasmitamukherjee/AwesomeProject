@@ -1,14 +1,13 @@
 import { StyleSheet, Text, View,SafeAreaView, Pressable } from 'react-native'
 import React from 'react'
-import LottieView from 'lottie-react-native'
 import { useNavigation } from '@react-navigation/native'
-
+import  LottieView  from 'lottie-react-native'
 const BasicInfo = () => {
 const navigation =useNavigation()
   
   return (
     <SafeAreaView style={{flex:1,backgroundColor:'white'}}>
-     <View style={{marginTop:300}}>
+     <View style={{marginTop:90}}>
         
         <Text style={{fontSize:35,fontFamily:"Poppins-Bold",
         fontWeight: 800,
@@ -24,15 +23,21 @@ const navigation =useNavigation()
     color:'black'}}>
         Let your profile shine, bridging the gap between employers and employees seamlessly.
         </Text>
-        {/* <View style={{ alignItems: 'center', marginTop: 20 }}>
+        <View style={{ alignItems: 'center', marginTop: 20}}>
         <LottieView
-        
-            source={require('../assets/handshake.json')} // Replace 'animation.json' with your animation file path
-            autoPlay
-            loop
-            style={{ width: 200, height: 200 , flex: 1}}
-          />
-        </View>  */}
+          source={require('../assets/lottie.json')}
+          style={{
+            height: 500,
+            width: 500,
+            alignSelf: 'center',
+            
+            justifyContent: 'center',
+          }}
+          autoPlay
+          loop={true}
+          speed={0.7}
+        />
+        </View> 
         
         </View>
 

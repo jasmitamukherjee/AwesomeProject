@@ -30,7 +30,7 @@ const NameScreen = () => {
   <Text style={{  fontSize: 25,
               fontWeight: 'bold',
              color:"black"}}>
-    Enter your name : 
+    Enter your name 
   </Text>
   <TextInput
   autoFocus={true}
