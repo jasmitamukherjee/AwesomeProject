@@ -1,14 +1,25 @@
 import { TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons'
+import { getRegistrationProgress, saveRegistrationProgress } from '../registrationUtils';
 const LookingForEmployee = () => {
+  useEffect(() => {
+    getRegistrationProgress("LookingForEmployee").then(progressData => {
+      if (progressData) {
+        setLookingFor(progressData.lookingFor || []);
+      }
+    });
+  }, []);
   const navigation=useNavigation()
   const handleNext=()=>{
+    if(lookingFor.length > 0){
+    saveRegistrationProgress('LookingForEmployee', { lookingFor });}
+
    
     navigation.navigate("Photos")}
   

@@ -7,12 +7,16 @@ from 'react-native-vector-icons/AntDesign'
 import { useNavigation } from '@react-navigation/native'
 import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons'
+import { saveRegistrationProgress } from '../registrationUtils'
 
 const PasswordScreen = () => {
 
   const [password, setPassword] = useState("")
   const navigation=useNavigation()
   const handleNext=()=>{
+    if(password.trim() !== ''){
+      saveRegistrationProgress('Password',{password})
+    }
     navigation.navigate("Birth")
 
   }
@@ -35,7 +39,7 @@ const PasswordScreen = () => {
             color:"black",
             marginTop: 15,
           }}>Please choose a password</Text>
-           <TextInput autoFocus={true} secureTextEntry={true} value={password} onChange={(text)=>setPassword(text)} 
+           <TextInput autoFocus={true} secureTextEntry={true} value={password} onChangeText={(text)=>setPassword(text)} 
           style={{
             width: 340,
             marginVertical: 10,
