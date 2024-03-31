@@ -2,34 +2,32 @@ import { StyleSheet, Text, View,SafeAreaView ,Image,TextInput} from 'react-nativ
 import React, { useEffect, useState } from 'react'
 import Entypo
 from 'react-native-vector-icons/Entypo'
-import MapView, { Marker } from 'react-native-maps'
-import Geolocation from '@react-native-community/geolocation'
 import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons'
+import { getRegistrationProgress, saveRegistrationProgress } from '../registrationUtils'
 const LocationScreen = () => {
-  const [location,setLocation] =useState("")
-  const [coordinates] = useState([
-    {
-      latitude: 12.9716,
-      longitude: 77.5946,
-    },
-    {
-      latitude: 13.0451,
-      longitude: 77.6269,
-    },
-  ]);
-  const [region, setRegion] = useState({
-    latitude: 0,
-    longitude: 0,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  });
+  useEffect(()=>{
+    getRegistrationProgress('Location').then(progressData => {
+      if(progressData){
+        const {location} = progressData
+        const [cityValue,stateValue]= location.split(",")
+        setCity(cityValue)
+        setState(stateValue)
+
+      }
+    })
+
+  },[])
   const [city, setCity] = useState("")
   const [state, setState] = useState("")
   const navigation=useNavigation()
   const handleNext=()=>{
+    if(city.trim() !== '' && state.trim() !== ''){
+      const location = `${city},${state}`
+      saveRegistrationProgress('Location',{location})
+    }
     navigation.navigate("Gender")
 
   }

@@ -1,19 +1,31 @@
 import { StyleSheet, Text, View,SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation } from '@react-navigation/native'
+import { getRegistrationProgress, saveRegistrationProgress } from '../registrationUtils'
 const NameScreen = () => {
   const [firstName,setFirstName]=useState("")
   const [lastName, setLastName] = useState("")
   const navigation=useNavigation()
+  useEffect(()=>{
+    getRegistrationProgress('Name').then(progressData => {
+      if(progressData){
+        setFirstName(progressData.firstName || '')
+      }
+    })
+
+  },[])
   const handleNext=()=>{
+    if(firstName.trim() !== ''){
+      saveRegistrationProgress('Name',{firstName})
+    }
     navigation.navigate("Email")
 
   }
   return (
     <SafeAreaView style={{flex:1,backgroundColor:"white"}}>
-      <Text style={{marginTop:50,textAlign:'center',color:"gray"}}>no bg checks are connected
+      <Text style={{marginTop:50,textAlign:'center',color:"gray"}}>
       </Text>
    <View style={{marginTop:30,marginHorizontal:20}}>
     <View style={{flexDirection: 'row', alignItems: 'center'}}>
