@@ -29,7 +29,7 @@ const ShowPromptsScreen = () => {
       }); // Navigate away from the screen when prompts reach three
     }
   };
-  console.log('question', prompts);
+  // console.log('question', prompts);
   const promptss = [
     {
       id: '0',
@@ -150,7 +150,7 @@ const ShowPromptsScreen = () => {
      <View style={{marginHorizontal:10,marginTop:20,flexDirection:"row",gap:10}}>
 
      {promptss.map((item, index) => (
-  <View key={index}>
+  <View key={item.id}>
     <Pressable onPress={()=> setOption(item?.name)}style={{ padding: 10, borderRadius: 20 ,backgroundColor: option== item?.name ? "#502b63" :"white"}}>
       <Text style={{textAlign:"center",color:option==item?.name ? "white":"black"}}>{item?.name}</Text>
     </Pressable>
@@ -166,7 +166,7 @@ const ShowPromptsScreen = () => {
           {option== item?.name && (
           <View>
             {item?.questions?.map((question,index)=>(
-              <Pressable onPress={()=> openModal(question)} style={{marginVertical:12,}}>
+              <Pressable key={question.id} onPress={()=> openModal(question)} style={{marginVertical:12,}}>
                 <Text style={{fontSize:15,fontWeight:500,color:"black"}}>{question?.question}</Text>
               </Pressable>
 
