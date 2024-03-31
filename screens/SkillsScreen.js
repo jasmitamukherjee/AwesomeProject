@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View,SafeAreaView,Image, FlatList ,TextInput,Button} from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import MaterialIcons
 from 'react-native-vector-icons/MaterialIcons'
 import AntDesign
@@ -10,11 +10,25 @@ import MaterialCommunityIcons
 from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation } from '@react-navigation/native'
 import { TouchableOpacity } from 'react-native'
+import { getRegistrationProgress, saveRegistrationProgress } from '../registrationUtils'
 
 const SkillsScreen = () => {
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const progressData = await getRegistrationProgress('Skills');
+      if (progressData) {
+        const { savedSkills, savedResumeUri } = progressData;
+        setSkills(savedSkills || []);
+        setResumeUri(savedResumeUri || '');
+      }
+    };
+    fetchData();
+  }, []);
   const navigation=useNavigation()
   const handleNext=()=>{
+    saveRegistrationProgress('Skills', { savedSkills: skills, savedResumeUri: resumeUri });
+
     navigation.navigate("LookingForEmployee")
 
   }
@@ -77,7 +91,7 @@ const SkillsScreen = () => {
             value={skillInput}
             onChangeText={text => setSkillInput(text)}
           />
-          <View style={{width:40}}>
+          <View style={{width:40,marginLeft:15}}>
           <MaterialIcons.Button name="add" backgroundColor="#502b63" borderRadius={30} width={50} onPress={handleAddSkill}></MaterialIcons.Button>
           </View>
         </View>
@@ -97,7 +111,7 @@ const SkillsScreen = () => {
             marginTop: 15,
           }}>Upload your Resume</Text>
 
-<View style={{width:40,marginLeft:50,marginTop:15,}}>
+<View style={{width:40,marginLeft:135,marginTop:15,}}>
 <AntDesign.Button name="upload" borderRadius={30} 
   width={50}  backgroundColor="#502b63" onPress={handleUploadResume} />
           
