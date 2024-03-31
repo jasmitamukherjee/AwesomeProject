@@ -21,7 +21,7 @@ const EmployeeSkills = () => {
     saveRegistrationProgress('EmployeeSkills', { employeeSkills });}
 
    
-    navigation.navigate("Photos")}
+    navigation.navigate("LookingForEmployee")}
   
   const [employeeSkills, setEmployeeSkills] = useState([]);
 
@@ -85,7 +85,7 @@ const EmployeeSkills = () => {
         <View style={{ flex: 1, marginTop: 90, marginHorizontal: 20 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <View style={{ width: 44, height: 44, borderRadius: 22, borderWidth: 2, borderColor: 'black', justifyContent: 'center', alignItems: 'center' }}>
-              <FontAwesome name="magnify-scan" size={26} color="black" />
+              <MaterialCommunityIcons name="magnify-scan" size={26} color="black" />
             </View>
             <Image
               style={{ width: 100, height: 40 }}

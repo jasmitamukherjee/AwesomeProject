@@ -37,7 +37,7 @@ const EmployerPrompts = () => {
           <View style={{marginTop: 20, flexDirection: 'column', gap: 20}}>
           {route?.params?.prompts ? (
             route?.params?.prompts?.map((item, index) => (
-              <Pressable
+              <Pressable key={index}
                 onPress={() => navigation.navigate('ShowEmployerPrompts')}
                 style={{
                   borderColor: '#707070',
