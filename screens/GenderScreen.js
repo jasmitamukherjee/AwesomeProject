@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View,SafeAreaView,Image } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import FontAwesome6
 from 'react-native-vector-icons/FontAwesome6'
 import AntDesign
@@ -12,9 +12,21 @@ import { useState } from 'react'
 import { Pressable } from 'react-native'
 import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { getRegistrationProgress, saveRegistrationProgress } from '../registrationUtils'
 const GenderScreen = () => {
+  useEffect(()=>{
+    getRegistrationProgress("Gender").then(progressData =>{
+      if(progressData){
+        setGender(progressData.gender || '')
+      }
+    })
+
+  },[])
   const navigation=useNavigation()
   const handleNext=()=>{
+    if(gender.trim() !== ''){
+      saveRegistrationProgress('Gender',{gender})
+    }
     navigation.navigate("UserType")
 
   }
