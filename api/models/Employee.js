@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 
 const employeeSchema = new Schema({
 
-    offerToCompany: [
+    employeeSkills: [
         {
           type: String,
         },
       ],
-      jobPreferences: [
+      lookingForEmployee: [
         {
           type: String,
         },

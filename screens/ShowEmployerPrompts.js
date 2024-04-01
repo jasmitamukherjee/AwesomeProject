@@ -168,7 +168,7 @@ const ShowEmployerPrompts = () => {
           {option== item?.name && (
           <View>
             {item?.questions?.map((question,index)=>(
-              <Pressable onPress={()=> openModal(question)} style={{marginVertical:12,}}>
+              <Pressable   key={question.id} onPress={()=> openModal(question)} style={{marginVertical:12,}}>
                 <Text style={{fontSize:15,fontWeight:500,color:"black"}}>{question?.question}</Text>
               </Pressable>
 

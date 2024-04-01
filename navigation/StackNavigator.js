@@ -166,7 +166,7 @@ const StackNavigator = () => {
     }
   return (
     <NavigationContainer>
-        {token === null || token === '' ? <AuthStack /> : <MainStack />}
+        {token === null || token === '' ? <AuthStack/> : <MainStack />}
     </NavigationContainer>
   )
 }

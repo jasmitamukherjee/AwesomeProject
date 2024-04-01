@@ -6,36 +6,36 @@ const Employer= require("./Employer")
 const userSchema = new Schema({
   firstName: {
     type: String,
-    required: true,
+     required: true,
   },
   lastName: {
     type: String,
   },
   email: {
     type: String,
-    required: true,
+     required: true,
     unique: true,
   },
   password: {
     type: String,
-    required: true,
+     required: true,
   },
   gender: {
     type: String,
-    required: true,
+     required: true,
   },
   dateOfBirth: {
     type: String,
-    required: true,
+     required: true,
   },
   location: {
     type: String,
-    required: true,
+     required: true,
   },
   
-  type: {
+  userType: {
     type: String,
-    required: true,
+     required: true,
     enum: ['Employee', 'Employer']
   },
   imageUrls: [
@@ -47,18 +47,18 @@ const userSchema = new Schema({
     {
       question: {
         type: String,
-        required: true,
+         required: true,
       },
       answer: {
         type: String,
-        required: true,
+         required: true,
       },
     },
   ],
   //   genderPreference: {
   //     type: String,
   //     enum: ['male', 'female', 'both'],
-  //     required: true,
+       //required: true,
   //   },
   //   ageRangePreference: {
   //     min: {
@@ -70,81 +70,58 @@ const userSchema = new Schema({
   //       default: 99,
   //     },
   //   },
-  likedProfiles: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
-  ],
-  receivedLikes: [
-    {
-      userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-      },
-      image: {
-        type: String,
-        required: true,
-      },
-      comment: {
-        type: String,
-      },
-    },
-  ],
-  matches: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
-  ],
-  lastLogin: {
-    type: Date,
-    default: Date.now,
-  },
-  lastActive: {
-    type: Date,
-    default: Date.now,
-  },
-  visibility: {
-    type: String,
-    enum: ['public', 'hidden'],
-    default: 'public',
-  },
-  blockedUsers: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-    },
-  ],
-  notificationPreferences: {
-    // Define notification preferences here
-  },
+ 
 });
 
-// Load Employee and Employer schemas dynamically
-userSchema.pre('save', async function(next) {
-    // Load Employee schema if the user is an employee
-    if (this.type === 'Employee') {
-      try {
-        await Employee.create({});
-      } catch (err) {
-        console.error('Error creating Employee document:', err);
-      }
-    }
-    // Load Employer schema if the user is an employer
-    else if (this.type === 'Employer') {
-      try {
-        await Employer.create({});
-      } catch (err) {
-        console.error('Error creating Employer document:', err);
-      }
-    }
+// // Load Employee and Employer schemas dynamically
+// userSchema.pre('save', async function(next) {
+//     // Load Employee schema if the user is an employee
+//     if (this.type === 'Employee') {
+//       try {
+//         await Employee.create({});
+//       } catch (err) {
+//         console.error('Error creating Employee document:', err);
+//       }
+//     }
+//     // Load Employer schema if the user is an employer
+//     else if (this.type === 'Employer') {
+//       try {
+//         await Employer.create({});
+//       } catch (err) {
+//         console.error('Error creating Employer document:', err);
+//       }
+//     }
   
-    next();
-  });
+//     next();
+//   });
 
-// Create the User model
+// // Create the User model
+
+userSchema.pre('save', async function(next) {
+  if (this.userType === 'Employee') {
+    try {
+      // Create Employee document with relevant fields
+      await Employee.create({
+        lookingForEmployee: this.lookingForEmployee, // Include lookingForEmployee field
+        employeeSkills: this.employeeSkills, // Include employeeSkills field
+      });
+    } catch (err) {
+      console.error('Error creating Employee document:', err);
+    }
+  } else if (this.userType === 'Employer') {
+    try {
+      // Create Employer document with relevant fields
+      await Employer.create({
+        lookingFor: this.lookingFor, // Include lookingFor field
+        companyOffers: this.companyOffers, // Include companyOffers field
+      });
+    } catch (err) {
+      console.error('Error creating Employer document:', err);
+    }
+  }
+
+  next();
+});
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

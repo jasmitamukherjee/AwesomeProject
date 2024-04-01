@@ -3,12 +3,12 @@ const Schema = mongoose.Schema;
 
 
 const employerSchema = new Schema({
-    offerToEmployee: [
+    companyOffers: [
         {
           type: String,
         },
       ],
-      employeePreferences: [
+      lookingFor: [
         {
           type: String,
         },

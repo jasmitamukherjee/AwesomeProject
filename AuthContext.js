@@ -6,8 +6,16 @@ const AuthContext= createContext();
 
 const AuthProvider = ({children})=>{
     const [token,setToken] =useState("")
-    const [isLoading,setIsLoading]  = useState("")
-
+    const [isLoading,setIsLoading]  = useState(false)
+    const login = () => {
+      setToken('token');
+      setIsLoading(false);
+    };
+  
+    const register = () => {
+      setToken('');
+      setIsLoading(false);
+    };
     const isLoggedIn = async () => {
         try {
           setIsLoading(true);
@@ -21,9 +29,15 @@ const AuthProvider = ({children})=>{
       useEffect(() => {
           isLoggedIn()
       },[token]);
-
+      useEffect(() => {
+        // Check if token is set and trigger navigation accordingly
+        if (token) {
+          // Perform navigation or any other action
+          console.log('Token set, performing navigation...');
+        }
+      }, [token]);
       return(
-        <AuthContext.Provider value={{token,isLoading,setToken}}>
+        <AuthContext.Provider value={{token,isLoading,setToken,login,register}}>
             {children}
         </AuthContext.Provider>
       )

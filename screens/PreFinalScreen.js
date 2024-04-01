@@ -65,15 +65,21 @@ const PreFinalScreen = () => {
       ]; 
 
       
-      let userData = {};
+      let userData = [];
 
-      // Retrieve data for each screen and add it to the user data object
+     
       for (const screenName of screens) {
         const screenData = await getRegistrationProgress(screenName);
         if (screenData) {
           userData = {...userData, ...screenData}; // Merge screen data into user data
         }
       }
+      // for (const screenName of screens) {
+      //   const screenData = await getRegistrationProgress(screenName);
+      //   if (screenData) {
+      //     userData.push({ ...screenData }); // Push screen data as an object into the userData array
+      //   }
+      // }
 
       
       setUserData(userData);
@@ -83,6 +89,28 @@ const PreFinalScreen = () => {
     }
   };
  
+
+const registerUser= async ()=>{
+
+  try {
+    const response = await axios
+    .post('http://localhost:5000/register', userData)
+    .then(response => {
+      console.log("resonse ",response);
+      const token = response.data.token;
+      AsyncStorage.setItem('token', token);
+      setToken(token)
+    });
+
+
+  clearAllScreenData();
+    
+  } catch (error) {
+    console.log("Error",error)
+    
+  }
+ }
+
  const clearAllScreenData = async () => {
   try {
     const screens = [
@@ -115,27 +143,32 @@ const PreFinalScreen = () => {
     console.error('Error clearing screen data:', error);
   }
 };
-const registerUser= async ()=>{
 
-  try {
-    const response = await axios
-    .post('http://localhost:5000/register', userData)
-    .then(response => {
-      console.log(response);
-      const token = response.data.token;
-      AsyncStorage.setItem('token', token);
-      setToken(token)
-    });
+// const registerUser = async () => {
+//   try {
+//     const response = await fetch('http://localhost:3000/register', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(userData),
+//     });
 
+//     if (!response.ok) {
+//       throw new Error('Failed to register');
+//     }
 
- clearAllScreenData()
-    
-  } catch (error) {
-    console.log("Error",error)
-    
-  }
- }
-  console.log('user data', userData);
+//     const responseData = await response.json();
+//     const token = responseData.token;
+//     await AsyncStorage.setItem('token', token);
+//     setToken(token);
+
+//     await clearAllScreenData();
+//   } catch (error) {
+//     console.error('Error registering user:', error);
+//   }
+// };
+  console.log(userData);
   
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>

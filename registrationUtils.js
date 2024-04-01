@@ -4,7 +4,7 @@ export const saveRegistrationProgress = async(screenName,data)=>{
     try {
         const key = `registration_progress_${screenName}`
         await AsyncStorage.setItem(key,JSON.stringify(data))
-        console.log(`Progress saved for the ${screenName}`)
+        // console.log(`Progress saved for the ${screenName}`)
     } catch (error) {
         console.log("Error saving the progress",error)
         
